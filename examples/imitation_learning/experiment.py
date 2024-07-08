@@ -21,7 +21,7 @@ def experiment(env_id: str = None,
                n_epochs_save: int = 500,
                gamma: float = 0.99,
                results_dir: str = './logs',
-               use_cuda: bool = False,
+               use_cuda: bool = True,
                seed: int = 0):
 
     np.random.seed(seed)
@@ -44,7 +44,7 @@ def experiment(env_id: str = None,
     for epoch in range(n_epochs):
 
         # train
-        core.learn(n_steps=n_steps_per_epoch, n_steps_per_fit=n_steps_per_fit, quiet=True, render=False)
+        core.learn(n_steps=n_steps_per_epoch, n_steps_per_fit=n_steps_per_fit, quiet=False, render=True)
 
         # evaluate
         dataset = core.evaluate(n_episodes=n_eval_episodes)
@@ -56,6 +56,7 @@ def experiment(env_id: str = None,
         sw.add_scalar("Eval_J-stochastic", J_mean, epoch)
         sw.add_scalar("Eval_L-stochastic", L, epoch)
         agent_saver.save(core.agent, R_mean)
+        print("ddddddddddddd")
 
     agent_saver.save_curr_best_agent()
     print("Finished.")
