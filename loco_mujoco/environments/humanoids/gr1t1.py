@@ -127,12 +127,12 @@ class GR1T1(BaseRobotHumanoid):
             joints_to_remove += ["joint_left_shoulder_pitch", "joint_left_shoulder_roll", "joint_left_shoulder_yaw", "joint_left_elbow_pitch", "joint_left_wrist_yaw", "joint_left_wrist_pitch", "joint_left_wrist_roll",
                                  "joint_right_shoulder_pitch", "joint_right_shoulder_roll", "joint_right_shoulder_yaw", "joint_right_elbow_pitch", "joint_right_wrist_yaw", "joint_right_wrist_pitch", "joint_right_wrist_roll"]
             
-            motors_to_remove += ["joint_left_shoulder_pitch_actuator", "joint_left_shoulder_roll_actuator", "joint_left_shoulder_yaw_actuator", "joint_left_elbow_pitch_actuator", "joint_left_wrist_yaw_actuator", "joint_left_wrist_pitch_actuator", "joint_left_wrist_roll_actuator",
-                                 "joint_right_shoulder_pitch_actuator", "joint_right_shoulder_roll_actuator", "joint_right_shoulder_yaw_actuator", "joint_right_elbow_pitch_actuator", "joint_right_wrist_yaw_actuator", "joint_right_wrist_pitch_actuator", "joint_right_wrist_roll_actuator"]
-
+            motors_to_remove += ["link_left_shoulder_pitch", "link_left_shoulder_roll", "link_left_shoulder_yaw", "link_left_elbow_pitch", "link_left_wrist_yaw", "link_left_wrist_pitch", "link_left_wrist_roll",
+                                 "link_right_shoulder_pitch", "link_right_shoulder_roll", "link_right_shoulder_yaw", "link_right_elbow_pitch", "link_right_wrist_yaw", "link_right_wrist_pitch", "link_right_wrist_roll"]
+            
         if self._disable_back_joint:
             joints_to_remove += ["joint_waist_pitch", "joint_waist_roll", "joint_waist_yaw"]
-            motors_to_remove += ["joint_waist_pitch_actuator", "joint_waist_roll_actuator", "joint_waist_yaw_actuator"]
+            motors_to_remove += ["link_waist_pitch", "link_waist_roll", "link_waist_yaw"]
             
 
         return joints_to_remove, motors_to_remove, equ_constr_to_remove
@@ -361,11 +361,11 @@ class GR1T1(BaseRobotHumanoid):
 
         """
        
-        action_spec = ["joint_left_hip_pitch_actuator","joint_left_hip_roll_actuator","joint_left_hip_yaw_actuator","joint_left_knee_pitch_actuator","joint_left_ankle_pitch_actuator","joint_left_ankle_roll_actuator",
-                       "joint_right_hip_pitch_actuator","joint_right_hip_roll_actuator","joint_right_hip_yaw_actuator","joint_right_knee_pitch_actuator","joint_right_ankle_pitch_actuator","joint_right_ankle_roll_actuator",
-                       "joint_waist_pitch_actuator","joint_waist_roll_actuator","joint_waist_yaw_actuator",
-                       "joint_left_shoulder_pitch_actuator","joint_left_shoulder_roll_actuator","joint_left_shoulder_yaw_actuator","joint_left_elbow_pitch_actuator","joint_left_wrist_yaw_actuator","joint_left_wrist_pitch_actuator","joint_left_wrist_roll_actuator",
-                       "joint_right_shoulder_pitch_actuator","joint_right_shoulder_roll_actuator","joint_right_shoulder_yaw_actuator","joint_right_elbow_pitch_actuator","joint_right_wrist_yaw_actuator","joint_right_wrist_pitch_actuator","joint_right_wrist_roll_actuator"
+        action_spec = ["link_left_hip_pitch","link_left_hip_roll","link_left_hip_yaw","link_left_knee_pitch","link_left_ankle_pitch","link_left_ankle_roll",
+                       "link_right_hip_pitch","link_right_hip_roll","link_right_hip_yaw","link_right_knee_pitch","link_right_ankle_pitch","link_right_ankle_roll",
+                       "link_waist_pitch","link_waist_roll","link_waist_yaw",
+                       "link_left_shoulder_pitch","link_left_shoulder_roll","link_left_shoulder_yaw","link_left_elbow_pitch","link_left_wrist_yaw","link_left_wrist_pitch","link_left_wrist_roll",
+                       "link_right_shoulder_pitch","link_right_shoulder_roll","link_right_shoulder_yaw","link_right_elbow_pitch","link_right_wrist_yaw","link_right_wrist_pitch","link_right_wrist_roll"
                        ]
 
         return action_spec

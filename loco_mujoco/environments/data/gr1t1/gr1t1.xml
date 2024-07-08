@@ -60,6 +60,9 @@
         <mesh name="link_right_hand_yaw" file="r_hand_yaw.STL"/>
         <mesh name="link_right_hand_roll" file="r_hand_roll.STL"/>
         <mesh name="link_right_hand_pitch" file="r_hand_pitch.STL"/>
+        <texture builtin="gradient" height="100" rgb1=".4 .5 .6" rgb2="0 0 0" type="skybox" width="100"/>
+        <texture name="texplane" type="2d" builtin="checker" rgb1=".2 .3 .4" rgb2=".1 0.15 0.2" width="100" height="100"/>
+        <material name="MatPlane" reflectance="0.5" texture="texplane" texrepeat="1 1" texuniform="true"/>
     </asset>
 
     <worldbody>
@@ -68,7 +71,7 @@
         <body name="base" pos="0 0 0.95" childclass="gr1t1">
             <inertial pos="-0.0508888 0.000109183 -0.0455794" quat="0.706855 0.707166 0.0123661 -0.0109307" mass="6.45117" diaginertia="0.0149302 0.0127972 0.00640923"/>
             
-            <freejoint/>
+            
             
             <geom class="visual" rgba="0.752941 0.752941 0.752941 1" mesh="base"/>
 
@@ -312,42 +315,43 @@
     
     <actuator>
         <!-- left leg -->
-        <position class="gr1t1" name="link_left_hip_roll" joint="joint_left_hip_roll" ctrllimited="true" ctrlrange="-0.09 0.79" forcerange="-100 100" kp="251.625" kv="14.72"/>
-        <position class="gr1t1" name="link_left_hip_yaw" joint="joint_left_hip_yaw" ctrllimited="true" ctrlrange="-0.7 0.7" forcerange="-82.5 82.5" kp="362.5214" kv="10.0833"/>
-        <position class="gr1t1" name="link_left_hip_pitch" joint="joint_left_hip_pitch" ctrllimited="true" ctrlrange="-1.75 0.7" forcerange="-160 160" kp="200" kv="11"/>
-        <position class="gr1t1" name="link_left_knee_pitch" joint="joint_left_knee_pitch" ctrllimited="true" ctrlrange="-0.09 1.92" forcerange="-160 160" kp="200" kv="11"/>
-        <position class="gr1t1" name="link_left_ankle_pitch" joint="joint_left_ankle_pitch" ctrllimited="true" ctrlrange="-1.05 0.52" forcerange="-8 8" kp="10.9805" kv="0.5991"/>
-        <position class="gr1t1" name="link_left_ankle_roll" joint="joint_left_ankle_roll" ctrllimited="true" ctrlrange="-0.44 0.44" forcerange="-3 3" kp="0.25" kv="0.01"/>
+        <position class="gr1t1" name="link_left_hip_roll" joint="joint_left_hip_roll" ctrllimited="true" ctrlrange="-0.09 0.79" forcerange="-100 100" kp="251.625"/>
+        <position class="gr1t1" name="link_left_hip_yaw" joint="joint_left_hip_yaw" ctrllimited="true" ctrlrange="-0.7 0.7" forcerange="-82.5 82.5" kp="362.5214"/>
+        <position class="gr1t1" name="link_left_hip_pitch" joint="joint_left_hip_pitch" ctrllimited="true" ctrlrange="-1.75 0.7" forcerange="-160 160" kp="200"/>
+        <position class="gr1t1" name="link_left_knee_pitch" joint="joint_left_knee_pitch" ctrllimited="true" ctrlrange="-0.09 1.92" forcerange="-160 160" kp="200"/>
+        <position class="gr1t1" name="link_left_ankle_pitch" joint="joint_left_ankle_pitch" ctrllimited="true" ctrlrange="-1.05 0.52" forcerange="-8 8" kp="10.9805"/>
+        <position class="gr1t1" name="link_left_ankle_roll" joint="joint_left_ankle_roll" ctrllimited="true" ctrlrange="-0.44 0.44" forcerange="-3 3" kp="0.25"/>
 
         <!-- right leg -->
-        <position class="gr1t1" name="link_right_hip_roll" joint="joint_right_hip_roll" ctrllimited="true" ctrlrange="-0.79 0.09" forcerange="-100 100" kp="251.625" kv="14.72"/>
-        <position class="gr1t1" name="link_right_hip_yaw" joint="joint_right_hip_yaw" ctrllimited="true" ctrlrange="-0.7 0.7" forcerange="-82.5 82.5" kp="362.5214" kv="10.0833"/>
-        <position class="gr1t1" name="link_right_hip_pitch" joint="joint_right_hip_pitch" ctrllimited="true" ctrlrange="-1.75 0.7" forcerange="-160 160" kp="200" kv="11"/>
-        <position class="gr1t1" name="link_right_knee_pitch" joint="joint_right_knee_pitch" ctrllimited="true" ctrlrange="-0.09 1.92" forcerange="-160 160" kp="200" kv="11"/>
-        <position class="gr1t1" name="link_right_ankle_pitch" joint="joint_right_ankle_pitch" ctrllimited="true" ctrlrange="-1.05 0.52" forcerange="-8 8" kp="10.9805" kv="0.5991"/>
-        <position class="gr1t1" name="link_right_ankle_roll" joint="joint_right_ankle_roll" ctrllimited="true" ctrlrange="-0.44 0.44" forcerange="-3 3" kp="0.25" kv="0.01"/>
+        <position class="gr1t1" name="link_right_hip_roll" joint="joint_right_hip_roll" ctrllimited="true" ctrlrange="-0.79 0.09" forcerange="-100 100" kp="251.625"/>
+        <position class="gr1t1" name="link_right_hip_yaw" joint="joint_right_hip_yaw" ctrllimited="true" ctrlrange="-0.7 0.7" forcerange="-82.5 82.5" kp="362.5214"/>
+        <position class="gr1t1" name="link_right_hip_pitch" joint="joint_right_hip_pitch" ctrllimited="true" ctrlrange="-1.75 0.7" forcerange="-160 160" kp="200"/>
+        <position class="gr1t1" name="link_right_knee_pitch" joint="joint_right_knee_pitch" ctrllimited="true" ctrlrange="-0.09 1.92" forcerange="-160 160" kp="200"/>
+        <position class="gr1t1" name="link_right_ankle_pitch" joint="joint_right_ankle_pitch" ctrllimited="true" ctrlrange="-1.05 0.52" forcerange="-8 8" kp="10.9805"/>
+        <position class="gr1t1" name="link_right_ankle_roll" joint="joint_right_ankle_roll" ctrllimited="true" ctrlrange="-0.44 0.44" forcerange="-3 3" kp="0.25"/>
 
         <!-- waist -->
-        <position class="gr1t1" name="link_waist_yaw" joint="joint_waist_yaw" ctrllimited="true" ctrlrange="-1.05 1.05" forcerange="-82.5 82.5" kp="362.5214" kv="10.0833"/>
-        <position class="gr1t1" name="link_waist_pitch" joint="joint_waist_pitch" ctrllimited="true" ctrlrange="-0.52 1.22" forcerange="-82.5 82.5" kp="362.5214" kv="10.0833"/>
-        <position class="gr1t1" name="link_waist_roll" joint="joint_waist_roll" ctrllimited="true" ctrlrange="-0.7 0.7" forcerange="-82.5 82.5" kp="362.5214" kv="10.0833"/>
-                        
+        <position class="gr1t1" name="link_waist_yaw" joint="joint_waist_yaw" ctrllimited="true" ctrlrange="-1.05 1.05" forcerange="-82.5 82.5" kp="362.5214"/>
+        <position class="gr1t1" name="link_waist_pitch" joint="joint_waist_pitch" ctrllimited="true" ctrlrange="-0.52 1.22" forcerange="-82.5 82.5" kp="362.5214"/>
+        <position class="gr1t1" name="link_waist_roll" joint="joint_waist_roll" ctrllimited="true" ctrlrange="-0.7 0.7" forcerange="-82.5 82.5" kp="362.5214"/>
+
         <!-- left arm -->
-        <position class="gr1t1" name="link_left_shoulder_pitch" joint="joint_left_shoulder_pitch" ctrllimited="true" ctrlrange="-2.79 1.92" forcerange="-38 38" kp="92.85" kv="2.575"/>
-        <position class="gr1t1" name="link_left_shoulder_roll" joint="joint_left_shoulder_roll" ctrllimited="true" ctrlrange="-0.57 3.27" forcerange="-38 38" kp="92.85" kv="2.575"/>
-        <position class="gr1t1" name="link_left_shoulder_yaw" joint="joint_left_shoulder_yaw" ctrllimited="true" ctrlrange="-2.97 2.97" forcerange="-30 30" kp="112.06" kv="3.1"/>
-        <position class="gr1t1" name="link_left_elbow_pitch" joint="joint_left_elbow_pitch" ctrllimited="true" ctrlrange="-2.27 2.27" forcerange="-30 30" kp="112.06" kv="3.1"/>
-        <position class="gr1t1" name="link_left_wrist_yaw" joint="joint_left_wrist_yaw" ctrllimited="true" ctrlrange="-2.97 2.97" forcerange="-10.2 10.2" kp="10.0" kv="1.0"/>
-        <position class="gr1t1" name="link_left_wrist_roll" joint="joint_left_wrist_roll" ctrllimited="true" ctrlrange="-0.61 0.61" forcerange="-3.95 3.95" kp="10.0" kv="1.0"/>
-        <position class="gr1t1" name="link_left_wrist_pitch" joint="joint_left_wrist_pitch" ctrllimited="true" ctrlrange="-0.61 0.61" forcerange="-3.95 3.95" kp="10.0" kv="1.0"/>
-                          
+        <position class="gr1t1" name="link_left_shoulder_pitch" joint="joint_left_shoulder_pitch" ctrllimited="true" ctrlrange="-2.79 1.92" forcerange="-38 38" kp="92.85"/>
+        <position class="gr1t1" name="link_left_shoulder_roll" joint="joint_left_shoulder_roll" ctrllimited="true" ctrlrange="-0.57 3.27" forcerange="-38 38" kp="92.85"/>
+        <position class="gr1t1" name="link_left_shoulder_yaw" joint="joint_left_shoulder_yaw" ctrllimited="true" ctrlrange="-2.97 2.97" forcerange="-30 30" kp="112.06"/>
+        <position class="gr1t1" name="link_left_elbow_pitch" joint="joint_left_elbow_pitch" ctrllimited="true" ctrlrange="-2.27 2.27" forcerange="-30 30" kp="112.06"/>
+        <position class="gr1t1" name="link_left_wrist_yaw" joint="joint_left_wrist_yaw" ctrllimited="true" ctrlrange="-2.97 2.97" forcerange="-10.2 10.2" kp="10.0"/>
+        <position class="gr1t1" name="link_left_wrist_roll" joint="joint_left_wrist_roll" ctrllimited="true" ctrlrange="-0.61 0.61" forcerange="-3.95 3.95" kp="10.0"/>
+        <position class="gr1t1" name="link_left_wrist_pitch" joint="joint_left_wrist_pitch" ctrllimited="true" ctrlrange="-0.61 0.61" forcerange="-3.95 3.95" kp="10.0"/>
+
         <!-- right arm -->
-        <position class="gr1t1" name="link_right_shoulder_pitch" joint="joint_right_shoulder_pitch" ctrllimited="true" ctrlrange="-2.79 1.92" forcerange="-38 38" kp="92.85" kv="2.575"/>
-        <position class="gr1t1" name="link_right_shoulder_roll" joint="joint_right_shoulder_roll" ctrllimited="true" ctrlrange="-3.27 0.57" forcerange="-38 38" kp="92.85" kv="2.575"/>
-        <position class="gr1t1" name="link_right_shoulder_yaw" joint="joint_right_shoulder_yaw" ctrllimited="true" ctrlrange="-2.97 2.97" forcerange="-30 30" kp="112.06" kv="3.1"/>
-        <position class="gr1t1" name="link_right_elbow_pitch" joint="joint_right_elbow_pitch" ctrllimited="true" ctrlrange="-2.27 2.27" forcerange="-30 30" kp="112.06" kv="3.1"/>
-        <position class="gr1t1" name="link_right_wrist_yaw" joint="joint_right_wrist_yaw" ctrllimited="true" ctrlrange="-2.97 2.97" forcerange="-10.2 10.2" kp="10.0" kv="1.0"/>
-        <position class="gr1t1" name="link_right_wrist_roll" joint="joint_right_wrist_roll" ctrllimited="true" ctrlrange="-0.61 0.61" forcerange="-3.95 3.95" kp="10.0" kv="1.0"/>
-        <position class="gr1t1" name="link_right_wrist_pitch" joint="joint_right_wrist_pitch" ctrllimited="true" ctrlrange="-0.61 0.61" forcerange="-3.95 3.95" kp="10.0" kv="1.0"/>
+        <position class="gr1t1" name="link_right_shoulder_pitch" joint="joint_right_shoulder_pitch" ctrllimited="true" ctrlrange="-2.79 1.92" forcerange="-38 38" kp="92.85"/>
+        <position class="gr1t1" name="link_right_shoulder_roll" joint="joint_right_shoulder_roll" ctrllimited="true" ctrlrange="-3.27 0.57" forcerange="-38 38" kp="92.85"/>
+        <position class="gr1t1" name="link_right_shoulder_yaw" joint="joint_right_shoulder_yaw" ctrllimited="true" ctrlrange="-2.97 2.97" forcerange="-30 30" kp="112.06"/>
+        <position class="gr1t1" name="link_right_elbow_pitch" joint="joint_right_elbow_pitch" ctrllimited="true" ctrlrange="-2.27 2.27" forcerange="-30 30" kp="112.06"/>
+        <position class="gr1t1" name="link_right_wrist_yaw" joint="joint_right_wrist_yaw" ctrllimited="true" ctrlrange="-2.97 2.97" forcerange="-10.2 10.2" kp="10.0"/>
+        <position class="gr1t1" name="link_right_wrist_roll" joint="joint_right_wrist_roll" ctrllimited="true" ctrlrange="-0.61 0.61" forcerange="-3.95 3.95" kp="10.0"/>
+        <position class="gr1t1" name="link_right_wrist_pitch" joint="joint_right_wrist_pitch" ctrllimited="true" ctrlrange="-0.61 0.61" forcerange="-3.95 3.95" kp="10.0"/>
+    
     </actuator>
 </mujoco>

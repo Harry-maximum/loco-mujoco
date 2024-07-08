@@ -35,7 +35,7 @@ if __name__ == '__main__':
     #            "HumanoidTorque.walk", "HumanoidTorque.run",
     #            "HumanoidMuscle.walk", "HumanoidMuscle.run",
     #            "UnitreeA1.simple", "UnitreeA1.hard"]
-    env_ids = ["UnitreeH1.run"]
+    env_ids = ["GR1T1.walk"]
     for env_id in env_ids:
         launcher.add_experiment(env_id__=env_id, **default_params)
 
