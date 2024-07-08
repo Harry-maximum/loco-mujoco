@@ -37,7 +37,8 @@ def experiment(env_id: str = None,
     print(f"Starting training {env_id}...")
 
     # create environment, agent and core
-    mdp = LocoEnv.make(env_id)
+    mdp = LocoEnv.make(env_id, disable_arms=False, disable_back_joint=False)
+    
     agent = get_agent(env_id, mdp, use_cuda, sw)
     core = Core(agent, mdp)
 
