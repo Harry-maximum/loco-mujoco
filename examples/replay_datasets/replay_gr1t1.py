@@ -13,7 +13,7 @@ def experiment():
     n_substeps = env_freq//desired_contr_freq
 
     # prepare trajectory params
-    traj_params = dict(traj_path="../generated_data/gr1t1_walk.npz",
+    traj_params = dict(traj_path="../generated_data/gr1t1_run.npz",
                        traj_dt=(1 / traj_data_freq),
                        control_dt=(1 / desired_contr_freq))
 
