@@ -11,6 +11,7 @@ from imitation_lib.utils import BestAgentSaver
 
 from loco_mujoco import LocoEnv
 from utils import get_agent
+from mushroom_rl.core import Agent
 
 
 def experiment(env_id: str = None,
@@ -38,14 +39,14 @@ def experiment(env_id: str = None,
 
     # create environment, agent and core
     mdp = LocoEnv.make(env_id, disable_arms=False, disable_back_joint=False)
-    
-    agent = get_agent(env_id, mdp, use_cuda, sw)
+    agent = Agent.load("./logs/loco_mujoco_evalution_2024-07-08_19-07-35/env_id___GR1T1.walk/1/agent_epoch_41_J_958.394351.msh")
+    # agent = get_agent(env_id, mdp, use_cuda, sw)
     core = Core(agent, mdp)
 
     for epoch in range(n_epochs):
 
         # train
-        core.learn(n_steps=n_steps_per_epoch, n_steps_per_fit=n_steps_per_fit, quiet=False, render=True)
+        core.learn(n_steps=n_steps_per_epoch, n_steps_per_fit=n_steps_per_fit, quiet=False, render=False)
 
         # evaluate
         dataset = core.evaluate(n_episodes=n_eval_episodes)
@@ -57,7 +58,7 @@ def experiment(env_id: str = None,
         sw.add_scalar("Eval_J-stochastic", J_mean, epoch)
         sw.add_scalar("Eval_L-stochastic", L, epoch)
         agent_saver.save(core.agent, R_mean)
-        print("ddddddddddddd")
+        print(epoch, R_mean, J_mean, L)
 
     agent_saver.save_curr_best_agent()
     print("Finished.")
