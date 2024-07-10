@@ -39,14 +39,14 @@ def experiment(env_id: str = None,
 
     # create environment, agent and core
     mdp = LocoEnv.make(env_id, disable_arms=False, disable_back_joint=False)
-    agent = Agent.load("./logs/loco_mujoco_evalution_2024-07-08_19-07-35/env_id___GR1T1.walk/1/agent_epoch_41_J_958.394351.msh")
+    agent = Agent.load("./logs/loco_mujoco_evalution_2024-07-09_14-27-40/env_id___GR1T1.walk/0/agent_epoch_395_J_941.627219.msh")
     # agent = get_agent(env_id, mdp, use_cuda, sw)
     core = Core(agent, mdp)
 
     for epoch in range(n_epochs):
 
         # train
-        core.learn(n_steps=n_steps_per_epoch, n_steps_per_fit=n_steps_per_fit, quiet=False, render=False)
+        core.learn(n_steps=n_steps_per_epoch, n_steps_per_fit=n_steps_per_fit, quiet=False, render=True)
 
         # evaluate
         dataset = core.evaluate(n_episodes=n_eval_episodes)
